@@ -60,3 +60,8 @@ mmseqs convert2fasta $rep_dir/${library_ID}_clust_${identity}_rep $output_dir/${
 bowtie2 -p 8 -x genome_index -1 sample.1.fq.gz -2 sample.2.fq.gz 2> logs/sample.log | samtools view -S -@ 8 -b > sample.bam
 inStrain profile sample.bam genome.fa -o sample.IS -p 8 -l 0.95 -c 4 -f 0.01 -g genome.gene.fna -s genome.stb
 ```
+
+## 9. Reconciles host and symbiont phylogenies
+```
+python AnGST.py Sample.input 1>sample.o 2>sample.e
+```
